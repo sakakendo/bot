@@ -54,6 +54,8 @@ def ktx(usernumber):
     req.post(url, data=payload)
     r = req.get(K_URL + "PracProgI_TOP.html")
     r = req.get(K_URL + "assignments/Check_Table.html")
+    if r.status_code is not 200:
+        return "Server is fault"
     
     soup = BeautifulSoup(r.text, "html.parser")
     #<table border="1">を抽出
